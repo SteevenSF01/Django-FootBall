@@ -47,3 +47,12 @@ def runContinent():
         
         pks = seeder.execute()
         print(pks)
+        
+def runRole():
+    roles = ['Defense','Central','Attaquant','Gardien','Remplacant']
+    for role in roles:
+        seeder.add_entity(Role,1,{
+            'nom': role
+        })
+    pks = seeder.execute()
+    print(pks)

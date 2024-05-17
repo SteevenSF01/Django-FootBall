@@ -3,5 +3,6 @@ django.setup()
 from MyApp import seed
 
 if __name__ == '__main__':
-    seed.runPays()
+    # seed.runPays()
     # seed.runContinent()
+    seed.runRole()
