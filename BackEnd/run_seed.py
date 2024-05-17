@@ -6,4 +6,5 @@ if __name__ == '__main__':
     # seed.runPays()
     # seed.runContinent()
     # seed.runRole()
-    seed.runEquipe()
+    # seed.runEquipe()
+    seed.runJoueur()

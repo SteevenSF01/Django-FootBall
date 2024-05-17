@@ -58,6 +58,7 @@ def runRole():
     print(pks)
     
 def runEquipe():
+    
     equipes = [
         
         {
@@ -163,3 +164,120 @@ def runEquipe():
         seeder.add_entity(Equipe,1, equipe)
     pks = seeder.execute()
     print(pks)
+    
+def runJoueur():
+    joueurs = [
+        {
+            'nom':'Salgado',
+            'prenom':'Steeven',
+            'age':28,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Male',
+            'pays_id': 241,
+            'role_id': 4,
+            'equipe_id': 5,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Eric',
+            'prenom':'Delhaye',
+            'age':30,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Male',
+            'pays_id': 132,
+            'role_id': 4,
+            'equipe_id': 5,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Melina',
+            'prenom':'Shlachter',
+            'age':27,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Female',
+            'pays_id': 192,
+            'role_id': 1,
+            'equipe_id': 3,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Jules',
+            'prenom':'Voiturier',
+            'age':22,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Male',
+            'pays_id': 95,
+            'role_id': 1,
+            'equipe_id': 9,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Sleima',
+            'prenom':'Ducros',
+            'age':24,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Female',
+            'pays_id': 49,
+            'role_id': 4,
+            'equipe_id': 2,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Ariel',
+            'prenom':'Nasimba',
+            'age':26,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Male',
+            'pays_id': 241,
+            'role_id': 3,
+            'equipe_id': 8,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Cactusinho',
+            'prenom':'****',
+            'age':2,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Male',
+            'pays_id': 57,
+            'role_id': 4,
+            'equipe_id': 1,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Yassin',
+            'prenom':'Jdujdujules',
+            'age':20,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Male',
+            'pays_id': 71,
+            'role_id': 5,
+            'equipe_id': 9,
+            'photo': 'default.png'
+        },
+        {
+            'nom':'Ronaldo',
+            'prenom':'Cristiano',
+            'age':38,
+            'telephone':'123-456-7890',
+            'email':'example@git.com',
+            'genre': 'Male',
+            'pays_id': 138,
+            'role_id': 2,
+            'equipe_id': 12,
+            'photo': 'default.png'
+        },
+    ]
+    for joueur in joueurs:
+        seeder.add_entity(Joueur,1,joueur)
+    pks = seeder.execute()
+    print(pks)
+    
