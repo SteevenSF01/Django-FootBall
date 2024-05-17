@@ -1,12 +1,20 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Navbar from './assets/components/Navbar'
 import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const route = createBrowserRouter([
+    {
+      path: "/",
+      element: <Navbar />
+    }
+  ])
 
   return (
     <>
-    <p className='text-red-500'>test</p>
+      <RouterProvider router={route} />
     </>
   )
 }
