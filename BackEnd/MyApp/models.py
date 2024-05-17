@@ -27,7 +27,7 @@ class Equipe(models.Model):
     def __str__(self):
         return self.nom
     
-class Role(models.Model):
+class Role(models.Model):   
     nom = models.CharField(max_length=30)
     
     def __str__(self):
