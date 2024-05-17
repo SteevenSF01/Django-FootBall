@@ -1,33 +1,33 @@
 from rest_framework import serializers
 from MyApp.models import *
 
-class JoueursSerializer(serializers.ModelSerializer):
+class JoueurSerializer(serializers.ModelSerializer):
     class Meta:
         model = Joueur
-        fields = ['id','nom','prenom','age','telephone','email','genre','pays','role','equipe','photo']
+        fields = ['id', 'nom', 'prenom', 'age', 'telephone', 'email', 'genre', 'pays', 'role', 'equipe', 'photo']
         
 class EquipeSerializer(serializers.ModelSerializer):
-    joueur = JoueursSerializer(many=True, read_only=True, source='joueur_set')
+    joueurs = JoueurSerializer(many=True, read_only=True)
     class Meta:
         model = Equipe
-        fields = ['id','nom','continent','pays','logo','maxJoueurs','joueur']
+        fields = ['id', 'nom', 'continent', 'pays', 'logo', 'maxJoueurs', 'joueurs']
         
 class PaysSerializer(serializers.ModelSerializer):
-    joueur = JoueursSerializer(many=True, read_only=True, source='joueur_set')
-    equipe = EquipeSerializer(many=True, read_only=True, source='equipe_set')
+    joueurs = JoueurSerializer(many=True, read_only=True)
+    equipes = EquipeSerializer(many=True, read_only=True)
     class Meta:
         model = Pays
-        fields = ['id', 'nom','joueur','equipe']
+        fields = ['id', 'nom', 'continent', 'joueurs', 'equipes']
         
 class ContinentSerializer(serializers.ModelSerializer):
-    pays = PaysSerializer(many=True, read_only=True, source='pays_set')
-    equipe = EquipeSerializer(many=True, read_only= True, source='equipe_set')
+    pays = PaysSerializer(many=True, read_only=True)
+    equipes = EquipeSerializer(many=True, read_only=True)
     class Meta:
         model = Continent
-        fields = ['id', 'nom', 'pays','equipe']
+        fields = ['id', 'nom', 'pays', 'equipes']
+        
 class RoleSerializer(serializers.ModelSerializer):
-    joueur = JoueursSerializer(many=True, read_only=True, source='joueur_set')
-    
+    joueurs = JoueurSerializer(many=True, read_only=True)
     class Meta:
         model = Role
-        fields = ['id', 'nom', 'joueur']
+        fields = ['id', 'nom', 'joueurs']
