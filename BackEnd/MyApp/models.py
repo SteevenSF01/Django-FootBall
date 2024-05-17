@@ -10,7 +10,6 @@ class Continent(models.Model):
 
 class Pays(models.Model):
     nom = models.CharField(max_length=50)
-    ville = models.CharField(max_length=50)
     continent = models.ForeignKey(Continent, on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
