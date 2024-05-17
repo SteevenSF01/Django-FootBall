@@ -6,7 +6,6 @@ from MyApp.models import *
 from rest_framework.response import Response
 # Create your views here.
 
-
 @api_view(['GET', 'POST'])
 def continent_list(request):
     if request.method == 'GET':
@@ -67,6 +66,21 @@ def equipe_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET', 'POST'])
+def joueur_list(request):
+    if request.method == 'GET':
+        joueur = Joueur.objects.all()
+        serializer = JoueurSerializer(joueur, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        serializer = JoueurSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()   
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 @api_view(['GET', 'PUT', 'DELETE'])
 def equipe_detail(request, pk):
     try:
@@ -88,28 +102,13 @@ def equipe_detail(request, pk):
     elif request.method == 'DELETE':
         equipe.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
-    
-@api_view(['GET', 'POST'])
-def joueur_list(request):
-    if request.method == 'GET':
-        joueur = Joueur.objects.all()
-        serializer = JoueurSerializer(joueur, many=True)
-        return Response(serializer.data)
-    
-    elif request.method == 'POST':
-        serializer = JoueurSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()   
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def joueur_detail(request, pk):
     try:
-        joueur = Equipe.objects.get(pk=pk)
-    except Equipe.DoesNotExist:
+        joueur = Joueur.objects.get(pk=pk)
+    except Joueur.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
@@ -126,4 +125,3 @@ def joueur_detail(request, pk):
     elif request.method == 'DELETE':
         joueur.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
