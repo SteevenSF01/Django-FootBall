@@ -18,7 +18,6 @@ class Pays(models.Model):
 class Equipe(models.Model):
     nom = models.CharField(max_length=50)
     continent = models.ForeignKey(Continent, on_delete=models.SET_NULL, null=True)
-    ville = models.CharField(max_length=50)  
     pays = models.ForeignKey(Pays, on_delete=models.SET_NULL, null=True)  
     logo = models.ImageField(upload_to='images/')
     maxJoueurs = models.IntegerField()
@@ -41,7 +40,8 @@ class Joueur(models.Model):
     genre = models.CharField(max_length=15)
     pays = models.ForeignKey(Pays, on_delete=models.SET_NULL, null=True)  
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True)
-    equipe = models.ForeignKey(Equipe, on_delete=models.SET_NULL, null=True, blank=True) 
+    equipe = models.ForeignKey(Equipe, on_delete=models.SET_NULL, null=True, blank=True)
+    photo = models.ImageField(upload_to='images/', null=True, blank=True, default='default.png')
     
     def __str__(self):
         return f"{self.prenom} {self.nom}"

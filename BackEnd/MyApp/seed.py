@@ -56,3 +56,110 @@ def runRole():
         })
     pks = seeder.execute()
     print(pks)
+    
+def runEquipe():
+    equipes = [
+        
+        {
+            'nom': 'Al-Ahly',
+            'continent_id': 3,
+            'pays_id':228,
+            'logo': 'images/club/Al-Ahly.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Al-Nassr',
+            'continent_id': 5,
+            'pays_id':211,
+            'logo': 'images/club/Al-Nassr.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'AS Roma',
+            'continent_id': 1,
+            'pays_id':238,
+            'logo': 'images/club/AS-Roma.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Atletico Madrid',
+            'continent_id': 1,
+            'pays_id':196,
+            'logo': 'images/club/Atletico-Madrid.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Borussia Dortmund',
+            'continent_id': 1,
+            'pays_id':196,
+            'logo': 'images/club/BVB.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Chelsea',
+            'continent_id': 1,
+            'pays_id':20,
+            'logo': 'images/club/Chelsea.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'FC Barcelona',
+            'continent_id': 1,
+            'pays_id':196,
+            'logo': 'images/club/FC-Barcelona.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'FC Bayern',
+            'continent_id': 1,
+            'pays_id':192,
+            'logo': 'images/club/FC-Bayern.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Inter Milan',
+            'continent_id': 1,
+            'pays_id':238,
+            'logo': 'images/club/Inter-Milan.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Juventus',
+            'continent_id': 1,
+            'pays_id':238,
+            'logo': 'images/club/Juventus.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'LDU Quito',
+            'continent_id': 2,
+            'pays_id':241,
+            'logo': 'images/club/LDU-Quito.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Liverpool',
+            'continent_id': 1,
+            'pays_id':20,
+            'logo': 'images/club/Liverpool.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Vaivase FC',
+            'continent_id': 4,
+            'pays_id':160,
+            'logo': 'images/club/Vaivase-FC.png',
+            'maxJoueurs' : 13,
+        },
+        {
+            'nom': 'Wydad AC',
+            'continent_id': 3,
+            'pays_id':71,
+            'logo': 'images/club/Wydad-AC.png',
+            'maxJoueurs' : 13,
+        },
+    ]
+    for equipe in equipes:
+        seeder.add_entity(Equipe,1, equipe)
+    pks = seeder.execute()
+    print(pks)

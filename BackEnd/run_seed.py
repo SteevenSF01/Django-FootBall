@@ -5,4 +5,5 @@ from MyApp import seed
 if __name__ == '__main__':
     # seed.runPays()
     # seed.runContinent()
-    seed.runRole()
+    # seed.runRole()
+    seed.runEquipe()
