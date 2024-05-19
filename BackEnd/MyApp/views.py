@@ -37,7 +37,7 @@ def pays_list(request):
     
     
 @api_view(['GET', 'POST'])
-def role_list(request):
+def roles_list(request):
     if request.method == 'GET':
         role = Role.objects.all()
         serializer = RoleSerializer(role, many=True)
@@ -76,6 +76,8 @@ def joueur_list(request):
     elif request.method == 'POST':
         serializer = JoueurSerializer(data=request.data)
         if serializer.is_valid():
+            if 'photo' not in request.FILES:
+                serializer.validated_data['photo'] = 'images/default.png'
             serializer.save()   
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
