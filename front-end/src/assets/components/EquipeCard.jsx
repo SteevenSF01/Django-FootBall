@@ -28,10 +28,10 @@ const EquipeCard = () => {
     }, [])
     return (
         <>
-            <section>
+            <section className='flex flex-wrap justify-center gap-5 px-10 '>
                 {equipes && equipes.map((equipe)=> {
                     return(
-                        <div className="bg-white rounded-lg shadow-md p-4" key={equipe.id}>
+                        <div className="bg-white rounded-lg shadow-md p-4 w-80" key={equipe.id}>
                         <div className="flex items-center justify-between mb-4">
                             <h2 className="text-xl font-semibold text-gray-800">{equipe.nom}</h2>
                             <img src={`http://127.0.0.1:8000/${equipe.logo}`} alt="Equipe Logo" className="w-12 h-12 object-cover rounded-full" />
