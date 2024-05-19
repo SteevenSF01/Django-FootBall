@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from MyApp.views import *
 
@@ -10,4 +12,4 @@ urlpatterns = [
     path('api/equipes/<int:pk>/', equipe_detail, name='equipe-detail'),
     path('api/joueurs/', joueur_list, name='joueurs-list'),
     path('api/joueurs/<int:pk>/', joueur_detail, name='joueurs-detail'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

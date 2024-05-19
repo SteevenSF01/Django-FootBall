@@ -40,6 +40,14 @@ class Joueur(models.Model):
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, related_name='joueurs')
     equipe = models.ForeignKey(Equipe, on_delete=models.SET_NULL, null=True, blank=True, related_name='joueurs')
     photo = models.ImageField(upload_to='images/', null=True, blank=True, default='images/default.png')
+    pace = models.PositiveIntegerField(default=50)
+    defense = models.PositiveIntegerField(default=50)
+    dribbling = models.PositiveIntegerField(default=50)
+    passing = models.PositiveIntegerField(default=50)
+    physical = models.PositiveIntegerField(default=50)
+    shooting = models.PositiveIntegerField(default=50)
+    numero = models.IntegerField(default=1)
+    
     
     def __str__(self):
         return f"{self.prenom} {self.nom}"
