@@ -17,7 +17,7 @@ class Equipe(models.Model):
     nom = models.CharField(max_length=50)
     continent = models.ForeignKey(Continent, on_delete=models.SET_NULL, null=True, related_name='equipes')
     pays = models.ForeignKey(Pays, on_delete=models.SET_NULL, null=True, related_name='equipes')
-    logo = models.ImageField(upload_to='images/club')
+    logo = models.ImageField(upload_to='images/club', null=True, blank=True, default='images/defaultClub.jpg')
     maxJoueurs = models.IntegerField()
     
     def __str__(self):

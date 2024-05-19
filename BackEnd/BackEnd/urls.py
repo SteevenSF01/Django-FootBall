@@ -6,7 +6,7 @@ from MyApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/continent/', continent_list, name='continent-list'),
+    path('api/continents/', continent_list, name='continent-list'),
     path('api/pays/', pays_list, name='pays-list'),
     path('api/equipes/', equipe_list, name='equipe-list'),
     path('api/equipes/<int:pk>/', equipe_detail, name='equipe-detail'),

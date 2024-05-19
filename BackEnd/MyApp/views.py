@@ -61,6 +61,8 @@ def equipe_list(request):
     elif request.method == 'POST':
         serializer = EquipeSerializer(data=request.data)
         if serializer.is_valid():
+            if 'logo' not in request.FILES:
+                serializer._validated_data['logo'] = 'images/defaultClub.jpg'
             serializer.save()   
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

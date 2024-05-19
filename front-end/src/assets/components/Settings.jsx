@@ -1,11 +1,18 @@
-import React from 'react';
+import { useState } from 'react';
 import JoueurForm from './JoueurForm';
+import EquipeForm from './EquipeForm';
 
 export default function Settings() {
+    const [creerJoueur, setCreerJoueur] = useState(true)
+    const [creerEquipe, setCreerEquipe] = useState(false)
     const ajoutJoueur = () => {
+        setCreerJoueur(true)
+        setCreerEquipe(false)
     };
 
     const ajoutEquipe = () => {
+        setCreerEquipe(true)
+        setCreerJoueur(false)
     };
 
     return (
@@ -25,7 +32,8 @@ export default function Settings() {
                     Ajouter une équipe
                 </button>
             </div>
-            <JoueurForm />
+            {creerJoueur && <JoueurForm />}
+            {creerEquipe && <EquipeForm />}
         </section>
     );
 }
