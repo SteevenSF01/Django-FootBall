@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './assets/components/Navbar'
-import { useState } from 'react'
+import Joueurs from './assets/components/Joueurs'
 import './App.css'
 
 function App() {
@@ -8,13 +8,22 @@ function App() {
   const route = createBrowserRouter([
     {
       path: "/",
-      element: <Navbar />
+      element: <Navbar />,
+      children : [
+        {
+          path :'/',
+          element: <Joueurs /> ,
+          index: true
+        }
+      ]
     }
   ])
 
   return (
     <>
-      <RouterProvider router={route} />
+      <section className='bg-gray-100'>
+        <RouterProvider router={route} />
+      </section>
     </>
   )
 }

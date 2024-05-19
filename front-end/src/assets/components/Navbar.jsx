@@ -22,7 +22,7 @@ export default function Navbar() {
             <nav className="bg-gray-200 py-3 px-5 flex justify-between items-center fixed top-0 w-full z-10 rounded-b-xl">
                 <h1 className='text-3xl font-medium text-gray-800 font-sans'>ProTeam</h1>
                 <div className="flex gap-x-10">
-                    <ul className="gap-x-5 text-gray-600 items-center hidden md:flex">
+                    <ul className="gap-x-5 text-gray-700 items-center hidden md:flex">
                         {links.map((link) => {
                             return (
                                 <Link className="cursor-pointer hover:underline" key={link.name} to={link.href}>
@@ -30,6 +30,13 @@ export default function Navbar() {
                                 </Link>
                             );
                         })}
+                        <Link to={'/settings'}>
+                            <button
+                            className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
+                            type="button">
+                            Settings
+                            </button>
+                        </Link>
                     </ul>
                     <div className={`relative block md:hidden `}>
                         <div
@@ -55,15 +62,9 @@ export default function Navbar() {
                             ""
                         )}
                     </div>
-                    <button
-                        className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 py-2 rounded-lg cursor-pointer"
-                        onClick={toggleMenu}
-                    >
-                        shop
-                    </button>
                 </div>
             </nav>
-            <div className="pt-20">
+            <div className="pt-10">
                 <Outlet />
             </div>
         </>
