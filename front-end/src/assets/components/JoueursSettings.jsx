@@ -23,10 +23,19 @@ export default function JoueursSettings() {
         );
     };
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://127.0.0.1:8000/api/joueurs/${id}/`);
+            setJoueurs(joueurs.filter((joueur) => joueur.id !== id));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <>
             <Link to="/settings">
-            <button className='text-white bg-blue-500 m-5 px-5 py-2 rounded-xl'>Retour</button>
+                <button className='text-white bg-blue-500 m-5 px-5 py-2 rounded-xl'>Retour</button>
             </Link>
 
             <section className="flex flex-wrap gap-5 justify-center p-10">
@@ -87,6 +96,17 @@ export default function JoueursSettings() {
                                         <div className="text-lg font-bold">{joueur.physical}</div>
                                         <div className="text-sm">PHY</div>
                                     </div>
+                                </div>
+                                <div className="flex justify-between w-full mt-4">
+                                    <button
+                                        onClick={() => handleDelete(joueur.id)}
+                                        className="text-white bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600"
+                                    >
+                                        Supprimer
+                                    </button>
+                                    <button className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+                                        Modifier
+                                    </button>
                                 </div>
                             </div>
                         );
