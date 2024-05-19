@@ -44,7 +44,6 @@ export default function JoueurForm() {
         };
         fetchData();
     }, []);
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -54,6 +53,7 @@ export default function JoueurForm() {
         formData.append('telephone', telephone);
         formData.append('email', email);
         formData.append('genre', genre);
+
         formData.append('pays', paysID);
         formData.append('role', roleID);
         formData.append('equipe', equipeID);
@@ -124,7 +124,7 @@ export default function JoueurForm() {
                     </select>
 
                     <label htmlFor="pays" className="block">Pays:</label>
-                    <select id="pays" value={paysID} onChange={(e) => setPaysID(e.target.value)} className="w-full bg-gray-800 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:border-blue-400">
+                    <select id="pays" value={paysID} onChange={(e) => setPaysID(parseInt(e.target.value))} className="w-full bg-gray-800 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:border-blue-400">
                         <option value=""> </option>
                         {pays.map((element) => (
                             <option value={element.id} key={element.id}>{element.nom}</option>
@@ -140,7 +140,7 @@ export default function JoueurForm() {
                     </select>
 
                     <label htmlFor="equipe" className="block">Equipe:</label>
-                    <select id="equipe" value={equipeID} onChange={(e) => setEquipeID(e.target.value)} className="w-full bg-gray-800 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:border-blue-400">
+                    <select id="equipe" value={equipeID} onChange={(e) => setEquipeID(parseInt(e.target.value))} className="w-full bg-gray-800 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:border-blue-400">
                         <option value=""> </option>
                         {equipes.map((element) => (
                             <option value={element.id} key={element.id}>{element.nom}</option>
