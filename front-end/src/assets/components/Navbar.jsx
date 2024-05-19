@@ -31,6 +31,7 @@ export default function Navbar() {
                                 </Link>
                             );
                         })}
+                    </ul>
                         <Link to={'/settings'}>
                             <button
                             className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]"
@@ -38,10 +39,9 @@ export default function Navbar() {
                             Settings
                             </button>
                         </Link>
-                    </ul>
                     <div className={`relative block md:hidden `}>
                         <div
-                            className="flex items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-2 px-4 rounded-lg"
+                            className="flex items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-[13px] px-7 rounded-lg text-gray-200 bg-gradient-to-tr from-gray-900 to-gray-800 uppercase font-bold font-sans text-xs"
                             onClick={() => setBurgerMenu(!burgerMenu)}
                         > menu
                         </div>

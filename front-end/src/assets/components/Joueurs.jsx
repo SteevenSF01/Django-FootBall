@@ -18,15 +18,20 @@ export default function Joueurs() {
         }
         fetchData()
     }, [])
+
+    const sumStats = (joueur) => {
+        return ((joueur.pace + joueur.dribbling + joueur.shooting + joueur.defense + joueur.passing + joueur.physical)/6);
+    };
     return (
     <>
         <section className='flex flex-wrap gap-5 justify-center p-10'>
             {joueurs && joueurs.map((joueur) => {
+                const totalStats = sumStats(joueur);
                 return(
                     <div key={joueur.id} className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 w-[250px]">
                         <div className="flex items-end">
                             <div className="flex flex-col items-center mr-4">
-                                <p className="text-3xl font-bold">{joueur.numero}</p>
+                                <p className="text-3xl font-bold">{totalStats.toFixed(0)}</p>
                                 <div className="mt-2">
                                     {joueur.equipe.logo ? 
                                 <img
