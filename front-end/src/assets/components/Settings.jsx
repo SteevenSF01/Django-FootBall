@@ -1,4 +1,5 @@
 import React from 'react';
+import JoueurForm from './JoueurForm';
 
 export default function Settings() {
     const ajoutJoueur = () => {
@@ -13,17 +14,18 @@ export default function Settings() {
             <div className="flex gap-4">
                 <button
                     className="py-3 px-6 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    onClick={handleAddPlayer}
+                    onClick={ajoutJoueur}
                 >
                     Ajouter un joueur
                 </button>
                 <button
                     className="py-3 px-6 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500"
-                    onClick={handleAddTeam}
+                    onClick={ajoutEquipe}
                 >
                     Ajouter une équipe
                 </button>
             </div>
+            <JoueurForm />
         </section>
     );
 }
