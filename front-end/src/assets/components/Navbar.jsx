@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import { Link, Outlet } from 'react-router-dom';
 import './../../index.css'
+import Baniere from './Baniere';
 
 export default function Navbar() {
     const [toggle, setToggle] = useState(true);
@@ -19,10 +20,10 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="bg-gray-200 py-3 px-5 flex justify-between items-center fixed top-0 w-full z-10 rounded-b-xl">
-                <h1 className='text-3xl font-medium text-gray-800 font-sans'>ProTeam</h1>
+            <nav className="bg-gradient-to-b from-[#020511] to-[#0d1821] py-3 px-5 flex justify-between items-center fixed top-0 w-full z-10 rounded-b-xl">
+                <h1 className='text-3xl font-medium text-gray-100 font-sans'>ProTeam</h1>
                 <div className="flex gap-x-10">
-                    <ul className="gap-x-5 text-gray-700 items-center hidden md:flex">
+                    <ul className="gap-x-5 text-gray-200 items-center hidden md:flex">
                         {links.map((link) => {
                             return (
                                 <Link className="cursor-pointer hover:underline" key={link.name} to={link.href}>
@@ -64,7 +65,8 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-            <div className="pt-10">
+            <div className="pt-15">
+                <Baniere />
                 <Outlet />
             </div>
         </>

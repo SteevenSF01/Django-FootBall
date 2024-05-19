@@ -18,7 +18,6 @@ export default function Joueurs() {
         }
         fetchData()
     }, [])
-    console.log(joueurs);
     return (
     <>
         <section className='flex flex-wrap gap-5 justify-center p-10'>

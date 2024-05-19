@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './assets/components/Navbar'
 import Joueurs from './assets/components/Joueurs'
+import Settings from './assets/components/Settings'
 import './App.css'
 
 function App() {
@@ -14,14 +15,18 @@ function App() {
           path :'/',
           element: <Joueurs /> ,
           index: true
-        }
+        },
+        {
+          path :'/settings',
+          element: <Settings /> ,
+        },
       ]
     }
   ])
 
   return (
     <>
-      <section className='bg-gray-100'>
+      <section className='bg-gradient-to-b from-[#020511] to-[#0d1821] '>
         <RouterProvider router={route} />
       </section>
     </>
