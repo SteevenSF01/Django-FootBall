@@ -4,6 +4,7 @@ import HomePage from './assets/components/HomePage'
 import Settings from './assets/components/Settings'
 import JoueursSettings from './assets/components/JoueursSettings'
 import EquipesSettings from './assets/components/EquipesSettings'
+import EquipeModifier from './assets/components/EquipeModifier'
 import './App.css'
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
         {
           path :'/settings/equipe',
           element: <EquipesSettings /> ,
+        },
+        {
+          path :'/settings/equipe/:id',
+          element: <EquipeModifier /> ,
         },
         {
           path :'/settings/joueur',

@@ -39,7 +39,7 @@ export default function EquipesSettings() {
             <Link to="/settings">
                 <button className='text-white bg-blue-500 m-5 px-5 py-2 rounded-xl'>Retour</button>
             </Link>
-            <section className='flex flex-wrap justify-center gap-5 px-10 '>
+            <section className='flex flex-wrap justify-center gap-5 px-10'>
                 {equipes && equipes.map((equipe) => {
                     return (
                         <div className="bg-white rounded-lg shadow-md p-4 w-80" key={equipe.id}>
@@ -59,9 +59,11 @@ export default function EquipesSettings() {
                                 >
                                     Supprimer
                                 </button>
-                                <button className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
-                                    Modifier
-                                </button>
+                                <Link to={`/settings/equipe/${equipe.id}`}>
+                                    <button className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+                                        Modifier
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     );
