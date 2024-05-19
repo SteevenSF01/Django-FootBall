@@ -21,7 +21,9 @@ export default function Navbar() {
     return (
         <>
             <nav className="bg-gradient-to-b from-[#020511] to-[#0d1821] py-3 px-5 flex justify-between items-center fixed top-0 w-full z-10 rounded-b-xl">
+                <Link to="/">
                 <h1 className='text-3xl font-medium text-gray-100 font-sans'>ProTeam</h1>
+                </Link>
                 <div className="flex gap-x-10">
                     <ul className="gap-x-5 text-gray-200 items-center hidden md:flex">
                         {links.map((link) => {
