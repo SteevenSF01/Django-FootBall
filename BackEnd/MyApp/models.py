@@ -17,7 +17,7 @@ class Equipe(models.Model):
     nom = models.CharField(max_length=50)
     continent = models.ForeignKey(Continent, on_delete=models.SET_NULL, null=True, related_name='equipes')
     pays = models.ForeignKey(Pays, on_delete=models.SET_NULL, null=True, related_name='equipes')
-    logo = models.ImageField(upload_to='images/')
+    logo = models.ImageField(upload_to='images/club')
     maxJoueurs = models.IntegerField()
     
     def __str__(self):
@@ -39,7 +39,7 @@ class Joueur(models.Model):
     pays = models.ForeignKey(Pays, on_delete=models.SET_NULL, null=True, related_name='joueurs')
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, related_name='joueurs')
     equipe = models.ForeignKey(Equipe, on_delete=models.SET_NULL, null=True, blank=True, related_name='joueurs')
-    photo = models.ImageField(upload_to='images/', null=True, blank=True, default='images/default.png')
+    photo = models.ImageField(upload_to='images/players', null=True, blank=True, default='images/default.png')
     pace = models.PositiveIntegerField(default=50)
     defense = models.PositiveIntegerField(default=50)
     dribbling = models.PositiveIntegerField(default=50)
