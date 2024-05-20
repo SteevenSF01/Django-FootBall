@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default function JoueurDetails() {
     const [joueur, setJoueur] = useState(null);
     const [roles, setRoles] = useState([])
+    const [pays, setPays] = useState([])
     const { id } = useParams();
 
     useEffect(() => {
@@ -13,13 +14,21 @@ export default function JoueurDetails() {
             try {
                 const response = await axios.get(`http://127.0.0.1:8000/api/joueurs/${id}/`);
                 setJoueur(response.data);
-
-                const roles = await axios.get(`http://127.0.0.1:8000/api/roles/${response.data.role}`);
-                setRoles(roles.data.nom);
+        
+                const rolesResponse = await axios.get(`http://127.0.0.1:8000/api/roles/${response.data.role}`);
+                if (rolesResponse.data) {
+                    setRoles(rolesResponse.data.nom);
+                }
+        
+                const paysResponse = await axios.get(`http://127.0.0.1:8000/api/pays/${response.data.pays}/`);
+                if (paysResponse.data) {
+                    setPays(paysResponse.data.nom);
+                }
             } catch (error) {
                 console.error(error);
             }
         };
+        
         fetchJoueur();
     }, [id]);
 
@@ -27,11 +36,10 @@ export default function JoueurDetails() {
         return <div className="text-center text-white mt-10">Loading...</div>;
     }
 
-    console.log(roles);
 
     return (
         <>
-            <section>
+            <section className='py-10'>
                 <Link to="/lesjoueurs">
                 <button className='bg-white px-5 py-1 m-5 rounded-xl'>Retour</button>
                 </Link>
@@ -63,7 +71,7 @@ export default function JoueurDetails() {
                             </div>
                             <div>
                                 <p className="font-semibold">Pays:</p>
-                                <p>{joueur.pays.nom}</p>
+                                <p>{pays}</p>
                             </div>
                             <div>
                                 <p className="font-semibold">Role:</p>

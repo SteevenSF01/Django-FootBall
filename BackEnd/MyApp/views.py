@@ -39,7 +39,7 @@ def pays_list(request):
 def pays_details(request,pk):
     try:
         pays = Pays.objects.get(pk=pk)
-    except pays.DoesNotExist:
+    except Pays.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
         serializer = PaysSerializer(pays)

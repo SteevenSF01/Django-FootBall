@@ -3,18 +3,18 @@ from MyApp.models import *
 
 
 
-class PaysSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pays
-        fields = ['id', 'nom', 'continent', 'joueurs', 'equipes']
+# class PaysSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Pays
+#         fields = ['id', 'nom', 'continent', 'joueurs', 'equipes']
 
-class EquipeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Equipe
-        fields = ['id', 'nom', 'continent', 'pays', 'logo', 'maxJoueurs', 'joueurs']
+# class EquipeSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Equipe
+#         fields = ['id', 'nom', 'continent', 'pays', 'logo', 'maxJoueurs', 'joueurs']
 class JoueurSerializer(serializers.ModelSerializer):
-    equipe = EquipeSerializer(read_only = True)
-    pays = PaysSerializer(read_only = True)
+    # equipe = EquipeSerializer(read_only = True)
+    # pays = PaysSerializer(read_only = True)
     class Meta:
         model = Joueur
         fields = ['id', 'nom', 'prenom', 'age', 'telephone', 'email', 'genre', 'pays', 'role', 'equipe', 'photo','pace','dribbling','shooting','defense','passing','physical','numero']

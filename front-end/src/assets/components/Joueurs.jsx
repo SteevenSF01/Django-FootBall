@@ -4,12 +4,20 @@ import { Link } from 'react-router-dom';
 
 export default function Joueurs() {
     const [joueurs, setJoueurs] = useState([]);
+    const [equipes, setEquipes] = useState([])
+    const [pays, setPays] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/joueurs/');
                 setJoueurs(response.data);
+
+                const equipe = await axios.get('http://127.0.0.1:8000/api/equipes/');
+                setEquipes(equipe.data);
+
+                const pays = await axios.get('http://127.0.0.1:8000/api/pays/');
+                setPays(pays.data);
             } catch (error) {
                 console.error(error);
             }
@@ -30,24 +38,27 @@ export default function Joueurs() {
                 {joueurs &&
                     joueurs.map((joueur) => {
                         const totalStats = sumStats(joueur);
+                        const equipeJoueur = equipes.find((equipe) => equipe.id === joueur.equipe);
+                        const paysJoueur = pays.find((p) => p.id === joueur.pays);
                         return (
                             <div key={joueur.id} className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 w-[250px]">
                                 <div className="flex items-end">
                                     <div className="flex flex-col items-center mr-4">
                                         <p className="text-3xl font-bold">{totalStats.toFixed(0)}</p>
                                         <div className="mt-2">
-                                            {joueur.equipe && joueur.equipe.logo ? (
-                                                <img
-                                                    className="h-8 w-8"
-                                                    src={`http://127.0.0.1:8000/${joueur.equipe.logo}`}
-                                                    alt="Team Logo"
-                                                />
-                                            ) : (
-                                                <div className="h-8 w-8 bg-gray-300 flex justify-center items-center text-[8px] px-2">No Team</div>
-                                            )}
+                                        {equipeJoueur && equipeJoueur.logo ? (
+                                            <img
+                                                className="h-8 w-8"
+                                                src={`http://127.0.0.1:8000/${equipeJoueur.logo}`}
+                                                alt="Team Logo"
+                                            />)
+                                            :
+                                            (
+                                                <p className='font-semibold'>Free</p>
+                                        )}
                                         </div>
-                                        <div className="mt-2">
-                                            {joueur.pays && <p>{joueur.pays.nom}</p>}
+                                        <div className="mt-2 font-semibold">
+                                            {paysJoueur && <p>{paysJoueur.nom}</p>}
                                         </div>
                                     </div>
                                     <div className="relative h-32 w-32">

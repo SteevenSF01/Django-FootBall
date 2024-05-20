@@ -31,7 +31,7 @@ export default function EquipeDetails() {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white">
+        <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white py-10">
             <div className="bg-gray-800 p-10 rounded-lg shadow-lg w-[400px]">
                 <div className="text-center">
                     <div className="relative w-40 h-40 mx-auto mb-4">
