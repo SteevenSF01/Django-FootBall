@@ -14,8 +14,8 @@ export default function Navbar() {
 
     const links = [
         { name: "Accueil", href: "/" },
-        { name: "Les Equipes", href: "/equipes" },
-        { name: "Les Joueurs", href: "/joueurs" },
+        { name: "Les Equipes", href: "/lesequipes" },
+        { name: "Les Joueurs", href: "/lesjoueurs" },
     ];
 
     return (

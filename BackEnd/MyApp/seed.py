@@ -1,6 +1,9 @@
 from django_seeder import Seed
 from MyApp.models import *
 import requests
+import random
+from faker import Faker
+
 
 
 # Fetch data from country api
@@ -164,120 +167,50 @@ def runEquipe():
         seeder.add_entity(Equipe,1, equipe)
     pks = seeder.execute()
     print(pks)
-    
+
 def runJoueur():
-    joueurs = [
-        {
-            'nom':'Salgado',
-            'prenom':'Steeven',
-            'age':28,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Male',
-            'pays_id': 241,
-            'role_id': 4,
-            'equipe_id': 5,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Eric',
-            'prenom':'Delhaye',
-            'age':30,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Male',
-            'pays_id': 132,
-            'role_id': 4,
-            'equipe_id': 5,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Melina',
-            'prenom':'Shlachter',
-            'age':27,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Female',
-            'pays_id': 192,
-            'role_id': 1,
-            'equipe_id': 3,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Jules',
-            'prenom':'Voiturier',
-            'age':22,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Male',
-            'pays_id': 95,
-            'role_id': 1,
-            'equipe_id': 9,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Sleima',
-            'prenom':'Ducros',
-            'age':24,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Female',
-            'pays_id': 49,
-            'role_id': 4,
-            'equipe_id': 2,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Ariel',
-            'prenom':'Nasimba',
-            'age':26,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Male',
-            'pays_id': 241,
-            'role_id': 3,
-            'equipe_id': 8,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Cactusinho',
-            'prenom':'****',
-            'age':2,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Male',
-            'pays_id': 57,
-            'role_id': 4,
-            'equipe_id': 1,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Yassin',
-            'prenom':'Jdujdujules',
-            'age':20,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Male',
-            'pays_id': 71,
-            'role_id': 5,
-            'equipe_id': 9,
-            'photo': 'default.png'
-        },
-        {
-            'nom':'Ronaldo',
-            'prenom':'Cristiano',
-            'age':38,
-            'telephone':'123-456-7890',
-            'email':'example@git.com',
-            'genre': 'Male',
-            'pays_id': 138,
-            'role_id': 2,
-            'equipe_id': 12,
-            'photo': 'default.png'
-        },
-    ]
-    for joueur in joueurs:
-        seeder.add_entity(Joueur,1,joueur)
+    fake = Faker()
+    seeder = Seed.seeder()
+
+    genres = ['Male', 'Female']
+    emails_male = ['gmail.com', 'yahoo.com', 'hotmail.com']
+    emails_female = ['outlook.com', 'icloud.com', 'aol.com']
+
+    for _ in range(40):
+        genre = random.choice(genres)
+        if genre == 'Male':
+            email_domain = random.choice(emails_male)
+            photo = 'players/male.png'
+        else:
+            email_domain = random.choice(emails_female)
+            photo = 'players/female.png'
+
+        nom = fake.last_name()
+        prenom = fake.first_name_male() if genre == 'Male' else fake.first_name_female()
+
+        equipe_id = random.choice([None] + list(range(1, 16)))  
+
+        joueur = {
+            'nom': nom,
+            'prenom': prenom,
+            'age': random.randint(18, 40),
+            'telephone': fake.phone_number(),
+            'email': f'{prenom}.{nom}@{email_domain}'.lower(),
+            'genre': genre,
+            'pays_id': random.randint(1, 250),
+            'role_id': random.randint(1, 5),
+            'equipe_id': equipe_id,
+            'photo': photo,
+            'pace': random.randint(1,100),
+            'defense': random.randint(1,100),
+            'dribbling': random.randint(1,100),
+            'passing': random.randint(1,100),
+            'physical': random.randint(1,100),
+            'shooting': random.randint(1,100),
+            'numero': random.randint(1,100),
+        }
+
+        seeder.add_entity(Joueur, 1, joueur)
+
     pks = seeder.execute()
     print(pks)
-    

@@ -104,9 +104,11 @@ export default function JoueursSettings() {
                                     >
                                         Supprimer
                                     </button>
+                                    <Link to={`/settings/joueur/${joueur.id}`}>
                                     <button className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
                                         Modifier
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
                         );

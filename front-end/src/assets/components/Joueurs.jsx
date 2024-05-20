@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function Joueurs() {
     const [joueurs, setJoueurs] = useState([]);
@@ -24,6 +25,7 @@ export default function Joueurs() {
 
     return (
         <>
+                <h1 className="text-5xl text-center mt-5 text-white">Les joueurs</h1>
             <section className="flex flex-wrap gap-5 justify-center p-10">
                 {joueurs &&
                     joueurs.map((joueur) => {
@@ -83,6 +85,9 @@ export default function Joueurs() {
                                         <div className="text-sm">PHY</div>
                                     </div>
                                 </div>
+                                <Link to={`/details/joueur/${joueur.id}`} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    Voir les détails
+                                </Link>
                             </div>
                         );
                     })}
