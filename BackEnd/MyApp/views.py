@@ -35,6 +35,26 @@ def pays_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+@api_view(['GET'])
+def pays_details(request,pk):
+    try:
+        pays = Pays.objects.get(pk=pk)
+    except pays.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = PaysSerializer(pays)
+        return Response(serializer.data)
+    
+@api_view(['GET'])
+def continent_details(request,pk):
+    try:
+        continent = Continent.objects.get(pk=pk)
+    except Continent.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = PaysSerializer(continent)
+        return Response(serializer.data)
+        
     
 @api_view(['GET', 'POST'])
 def roles_list(request):

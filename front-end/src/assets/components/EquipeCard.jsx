@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const EquipeCard = () => {
 
@@ -28,7 +29,8 @@ const EquipeCard = () => {
     }, [])
     return (
         <>
-            <section className='flex flex-wrap justify-center gap-5 px-10 '>
+            <h1 className="text-white text-5xl text-center mt-10">Les equipes</h1>
+            <section className='flex flex-wrap justify-center gap-5 px-10 mt-10'>
                 {equipes && equipes.map((equipe)=> {
                     return(
                         <div className="bg-white rounded-lg shadow-md p-4 w-80" key={equipe.id}>
@@ -41,6 +43,9 @@ const EquipeCard = () => {
                         <p className="text-gray-600 mb-2">Pays: {pays.find((p) => p.id == equipe.pays) ? pays.find((p) => p.id == equipe.pays).nom : ''}</p>
                             <p className="text-gray-600 mb-2">Max Joueurs: {equipe.maxJoueurs}</p>
                         </div>
+                        <Link to={`/details/equipe/${equipe.id}`} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Voir les détails
+                        </Link>
                     </div>
                     )
                 })}

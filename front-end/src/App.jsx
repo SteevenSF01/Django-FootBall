@@ -5,11 +5,12 @@ import Settings from './assets/components/Settings'
 import JoueursSettings from './assets/components/JoueursSettings'
 import JoueurModifier from './assets/components/JoueurModifier'
 import Joueurs from './assets/components/Joueurs'
-import JoueurDetail from './assets/components/DetailsJoueur'
+import JoueurDetails from './assets/components/DetailsJoueur'
 // Equipes
 import EquipesSettings from './assets/components/EquipesSettings'
 import EquipeModifier from './assets/components/EquipeModifier'
 import EquipeCard from './assets/components/EquipeCard'
+import EquipeDetails from './assets/components/EquipeDetails'
 import './App.css'
 
 function App() {
@@ -40,6 +41,10 @@ function App() {
           element: <EquipeModifier /> ,
         },
         {
+          path :'/details/equipe/:id',
+          element: <EquipeDetails /> ,
+        },
+        {
           path :'/settings/joueur',
           element: <JoueursSettings /> ,
         },
@@ -49,7 +54,7 @@ function App() {
         },
         {
           path :'/details/joueur/:id',
-          element: <JoueurDetail /> ,
+          element: <JoueurDetails /> ,
         },
       ]
     }
