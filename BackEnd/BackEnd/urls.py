@@ -15,4 +15,5 @@ urlpatterns = [
     path('api/joueurs/', joueur_list, name='joueurs-list'),
     path('api/joueurs/<int:pk>/', joueur_detail, name='joueurs-detail'),
     path('api/roles/', roles_list, name='roles-list'),
+    path('api/roles/<int:pk>', roles_details, name='roles-details'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

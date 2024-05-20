@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './assets/components/Navbar'
 import Settings from './assets/components/Settings'
+import HomePage from './assets/components/HomePage'
 // Joueurs
 import JoueursSettings from './assets/components/JoueursSettings'
 import JoueurModifier from './assets/components/JoueurModifier'
@@ -20,6 +21,11 @@ function App() {
       path: "/",
       element: <Navbar />,
       children : [
+        {
+          path :'/',
+          element: <HomePage /> ,
+          index: true
+        },
         {
           path :'/lesjoueurs',
           element: <Joueurs /> ,

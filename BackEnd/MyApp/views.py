@@ -54,6 +54,16 @@ def continent_details(request,pk):
     if request.method == 'GET':
         serializer = PaysSerializer(continent)
         return Response(serializer.data)
+    
+@api_view(['GET'])
+def roles_details(request,pk):
+    try:
+        roles = Role.objects.get(pk=pk)
+    except Role.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = PaysSerializer(roles)
+        return Response(serializer.data)
         
     
 @api_view(['GET', 'POST'])
