@@ -130,7 +130,7 @@ def equipe_detail(request, pk):
         serializer = EquipeSerializer(equipe, data=request.data)
         if serializer.is_valid():
             if 'logo' not in request.FILES:
-                serializer._validated_data['logo'] = '/images/defaultClub.jpg'
+                serializer._validated_data['logo'] = equipe.logo
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -155,7 +155,7 @@ def joueur_detail(request, pk):
         serializer = JoueurSerializer(joueur, data=request.data)
         if serializer.is_valid():
             if 'photo' not in request.FILES:
-                serializer.validated_data['photo'] = '/images/default.png'
+                serializer.validated_data['photo'] = joueur.photo
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -9,7 +9,7 @@ export default function JoueurModifier() {
     const [telephone, setTelephone] = useState('');
     const [email, setEmail] = useState('');
     const [genre, setGenre] = useState('');
-    const [photo, setPhoto] = useState(null);
+    const [photo, setPhoto] = useState([null]);
     const [pace, setPace] = useState(0);
     const [defense, setDefense] = useState(0);
     const [dribbling, setDribbling] = useState(0);
@@ -24,6 +24,7 @@ export default function JoueurModifier() {
     const [pays, setPays] = useState([]);
     const [roles, setRoles] = useState([]);
     const [equipes, setEquipes] = useState([]);
+    // const [photoActuelle, setPhotoActuelle] = useState([])
 
     const { id } = useParams();
 
@@ -48,6 +49,7 @@ export default function JoueurModifier() {
                 setPhysical(joueur.physical);
                 setShooting(joueur.shooting);
                 setNumero(joueur.numero);
+                // setPhoto(joueur.photo)
             } catch (error) {
                 console.error(error);
             }
@@ -57,15 +59,17 @@ export default function JoueurModifier() {
             try {
                 const paysResponse = await axios.get('http://127.0.0.1:8000/api/pays/');
                 setPays(paysResponse.data);
+
                 const rolesResponse = await axios.get('http://127.0.0.1:8000/api/roles/');
                 setRoles(rolesResponse.data);
+
                 const equipesResponse = await axios.get('http://127.0.0.1:8000/api/equipes/');
                 setEquipes(equipesResponse.data);
+
             } catch (error) {
                 console.error(error);
             }
         };
-
         fetchJoueur();
         fetchData();
     }, [id]);
