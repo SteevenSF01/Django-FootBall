@@ -109,7 +109,7 @@ export default function JoueurModifier() {
     };
 
     return (
-        <div>
+        <div className='py-10'>
             <h1>JoueurModifier</h1>
             <form onSubmit={handleSubmit} className='text-white px-0 flex-wrap gap-x-5 mx-auto flex w-[700px]' encType="multipart/form-data" method='POST'>
                 <div className="mb-4 flex flex-wrap w-80">
