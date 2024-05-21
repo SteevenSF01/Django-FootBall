@@ -4,19 +4,25 @@ import { Link } from 'react-router-dom';
 
 export default function JoueursSettings() {
     const [joueurs, setJoueurs] = useState([]);
+    const [equipes, setequipes] = useState([])
+    
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/joueurs/');
                 setJoueurs(response.data);
+
+                const equipesResponse = await axios.get('http://127.0.0.1:8000/api/equipes/');
+                setequipes(equipesResponse.data);
+
             } catch (error) {
                 console.error(error);
             }
         };
         fetchData();
     }, []);
-
+    
     const sumStats = (joueur) => {
         return (
             (joueur.pace + joueur.dribbling + joueur.shooting + joueur.defense + joueur.passing + joueur.physical) / 6
@@ -42,16 +48,17 @@ export default function JoueursSettings() {
                 {joueurs &&
                     joueurs.map((joueur) => {
                         const totalStats = sumStats(joueur);
+                        const equipeJoueur = equipes.find((equipe)=> equipe.id == joueur.equipe)
                         return (
                             <div key={joueur.id} className="flex flex-col items-center bg-gradient-to-tl from-white to bg-gray-400 rounded-lg shadow-lg p-4 w-[250px]">
                                 <div className="flex items-end">
                                     <div className="flex flex-col items-center mr-4">
                                         <p className="text-3xl font-bold">{totalStats.toFixed(0)}</p>
                                         <div className="mt-2">
-                                            {joueur.equipe && joueur.equipe.logo ? (
+                                            {joueur.equipe && equipeJoueur ? (
                                                 <img
                                                     className="h-8 w-8"
-                                                    src={`http://127.0.0.1:8000/${joueur.equipe.logo}`}
+                                                    src={`http://127.0.0.1:8000/${equipeJoueur.logo}`}
                                                     alt="Team Logo"
                                                 />
                                             ) : (
