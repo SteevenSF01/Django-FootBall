@@ -1,9 +1,15 @@
 import React from 'react';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
+import AOS from 'aos'
+import './../../../node_modules/aos/dist/aos.css'
 import { Link } from 'react-router-dom';
 
 export default function CardHomeEquipe() {
+
+    useEffect(() => {
+        AOS.init({duration : 2000})
+    }, [])
 
     const [equipes, setequipes] = useState([])
     const [pays, setPays] = useState([])
@@ -29,7 +35,7 @@ export default function CardHomeEquipe() {
     }, [])
     return (
         <>
-            <section className='flex flex-wrap justify-center gap-5 px-10 pb-10 mt-10'>
+            <section className='flex flex-wrap justify-center gap-5 px-10 pb-10 mt-10' data-aos='fade-left'>
                 {equipes && equipes.map((equipe)=> {
                     if (equipe.joueurs.length > 5) {
                         return(

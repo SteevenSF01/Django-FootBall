@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AOS from 'aos'
+import './../../../node_modules/aos/dist/aos.css'
+
+
 
 export default function Joueurs() {
     const [joueurs, setJoueurs] = useState([]);
     const [equipes, setEquipes] = useState([])
     const [pays, setPays] = useState([])
+
+    useEffect(() => {
+        AOS.init({duration : 2000})
+    }, [])
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,18 +39,18 @@ export default function Joueurs() {
             (joueur.pace + joueur.dribbling + joueur.shooting + joueur.defense + joueur.passing + joueur.physical) / 6
         );
     };
-
+console.log(joueurs);
     return (
         <>
                 <h1 className="text-5xl text-center mt-5 text-white">Les joueurs</h1>
-            <section className="flex flex-wrap gap-5 justify-center p-10">
+            <section className="flex flex-wrap gap-5 justify-center p-10" data-aos=''>
                 {joueurs &&
                     joueurs.map((joueur) => {
                         const totalStats = sumStats(joueur);
                         const equipeJoueur = equipes.find((equipe) => equipe.id === joueur.equipe);
                         const paysJoueur = pays.find((p) => p.id === joueur.pays);
                         return (
-                            <div key={joueur.id} className="flex flex-col items-center bg-gradient-to-tl from-white to bg-gray-400 rounded-lg shadow-lg p-4 w-[250px]">
+                            <div key={joueur.id} className="flex flex-col items-center bg-gradient-to-tl from-white to bg-gray-400 rounded-lg shadow-lg p-4 w-[250px]" data-aos='flip-right'>
                                 <div className="flex items-end">
                                     <div className="flex flex-col items-center mr-4">
                                         <p className="text-3xl font-bold">{totalStats.toFixed(0)}</p>

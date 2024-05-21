@@ -2,8 +2,16 @@ import React from 'react';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import AOS from 'aos'
+import './../../../node_modules/aos/dist/aos.css'
+
 
 const EquipeCard = () => {
+
+    useEffect(() => {
+        AOS.init({duration : 2000})
+    }, [])
+
 
     const [equipes, setequipes] = useState([])
     const [pays, setPays] = useState([])
@@ -33,7 +41,7 @@ const EquipeCard = () => {
             <section className='flex flex-wrap justify-center gap-5 px-10 pb-10 mt-10'>
                 {equipes && equipes.map((equipe)=> {
                     return(
-                        <div className="bg-gradient-to-tl from-white to bg-gray-400 rounded-lg shadow-md p-4 w-80" key={equipe.id}>
+                        <div className="bg-gradient-to-tl from-white to bg-gray-400 rounded-lg shadow-md p-4 w-80" key={equipe.id} data-aos='flip-right'>
                         <div className="flex items-center justify-between mb-4">
                             <h2 className="text-xl font-semibold text-gray-800">{equipe.nom}</h2>
                             <img src={`http://127.0.0.1:8000/${equipe.logo}`} alt="Equipe Logo" className="w-12 h-12 object-cover rounded-full" />

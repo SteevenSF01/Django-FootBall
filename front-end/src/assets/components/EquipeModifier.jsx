@@ -8,10 +8,13 @@ export default function EquipeModifier() {
     const [paysID, setPaysID] = useState('');
     const [maxJoueurs, setMaxJoueurs] = useState(0);
     const [logo, setLogo] = useState(null);
+
     const [continents, setContinents] = useState([]);
     const [pays, setPays] = useState([]);
 
     const { id } = useParams();
+
+    
 
     useEffect(() => {
         const fetchEquipe = async () => {

@@ -4,7 +4,7 @@ import CardHomeJoueur from "./CardHomeJoueur"
 export default function HomePage() {
     return (
         <>
-            <section className="mt-10">
+            <section className="mt-10 overflow-hidden">
                 <h1 className="text-white text-center text-4xl ">Les joueurs sans équipes</h1>
                 <CardHomeJoueur />
             </section>

@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AOS from 'aos'
+import './../../../node_modules/aos/dist/aos.css'
 
 export default function CardHomeJoueur() {
     const [joueurs, setJoueurs] = useState([]);
     const [equipes, setEquipes] = useState([]);
     const [pays, setPays] = useState([]);
+
+    useEffect(() => {
+        AOS.init({duration : 2000})
+    }, [])
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,7 +40,7 @@ export default function CardHomeJoueur() {
 
     return (
         <>
-            <section className="flex flex-wrap gap-5 justify-center p-10">
+            <section className="flex flex-wrap gap-5 justify-center p-10" data-aos='fade-up-right'>
                 {joueurs &&
                     joueurs.map((joueur) => {
                         const totalStats = sumStats(joueur);
