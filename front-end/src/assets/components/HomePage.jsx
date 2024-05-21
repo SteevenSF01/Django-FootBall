@@ -1,6 +1,5 @@
 import CardHomeEquipe from "./CardHomeEquipe"
 import CardHomeJoueur from "./CardHomeJoueur"
-import CardJoueur from "./Cardjoueur/CardJoueur"
 
 export default function HomePage() {
     return (
@@ -13,7 +12,6 @@ export default function HomePage() {
                 <h1 className="text-white text-center text-4xl ">Les équipes remplies</h1>
                 <CardHomeEquipe />
             </section>
-            <CardJoueur />
         </>
     )
 }
