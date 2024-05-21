@@ -41,7 +41,7 @@ export default function Joueurs() {
                         const equipeJoueur = equipes.find((equipe) => equipe.id === joueur.equipe);
                         const paysJoueur = pays.find((p) => p.id === joueur.pays);
                         return (
-                            <div key={joueur.id} className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 w-[250px]">
+                            <div key={joueur.id} className="flex flex-col items-center bg-gradient-to-tl from-white to bg-gray-400 rounded-lg shadow-lg p-4 w-[250px]">
                                 <div className="flex items-end">
                                     <div className="flex flex-col items-center mr-4">
                                         <p className="text-3xl font-bold">{totalStats.toFixed(0)}</p>
