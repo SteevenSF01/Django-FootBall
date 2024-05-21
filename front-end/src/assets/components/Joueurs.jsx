@@ -96,8 +96,10 @@ export default function Joueurs() {
                                         <div className="text-sm">PHY</div>
                                     </div>
                                 </div>
-                                <Link to={`/details/joueur/${joueur.id}`} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    Voir les détails
+                                <Link to={`/details/joueur/${joueur.id}`} >
+                                <button className="group group-hover:before:duration-500 group-hover:after:duration-[0.8s] after:duration-[0.8s] hover:border-sky-400  duration-[0.8s] before:duration-[0.8s] hover:duration-[0.8s] underline underline-offset-2    hover:after:-right-2 hover:before:top-8 hover:before:right-16 hover:after:scale-150 hover:after:blur-none hover:before:-bottom-8 hover:before:blur-none hover:bg-sky-400 hover:underline hover:underline-offset-4  origin-left hover:decoration-2 hover:text-sky-900 relative bg-sky-800 h-12 w-52 border text-left p-3 text-gray-50 text-base font-bold rounded-lg  overflow-hidden  before:absolute before:w-12 before:h-12 before:content[''] before:right-1 before:top-1 before:z-10 before:bg-sky-400 before:rounded-full before:blur-lg  after:absolute after:z-10 after:w-20 after:h-20 after:content['']  after:bg-cyan-600 after:right-8 after:top-3 after:rounded-full after:blur mt-5">
+                                Voir plus
+                                </button>
                                 </Link>
                             </div>
                         );
