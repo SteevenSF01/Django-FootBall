@@ -1,6 +1,5 @@
-import CardHomeJoueur from "./cardHomeJoueur/CardHomeJoueur"
-import CardHomeEquipe from "./cardHomeEquipe/CardHomeEquipe"
-
+import CardHomeEquipe from "./CardHomeEquipe"
+import CardHomeJoueur from "./CardHomeJoueur"
 
 export default function HomePage() {
     return (
