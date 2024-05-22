@@ -35,7 +35,7 @@ export default function CardHomeEquipe() {
     }, [])
     return (
         <>
-            <section className='flex flex-wrap justify-center gap-5 px-10 pb-10 mt-10' data-aos='fade-up'>
+            <section className='flex flex-wrap justify-center gap-5 px-10 pb-10 mt-10' data-aos=''>
                 {equipes && equipes.map((equipe)=> {
                     if (equipe.joueurs.length > 5) {
                         return(
